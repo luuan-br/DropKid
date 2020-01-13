@@ -13,8 +13,6 @@ export default function Home({navigation}) {
   const name = useNavigationParam('name')
   const [childrens, setChildrens] = useState(getValue(name))
 
-  console.log(childrens)
-
   const rendElemet = () => {
     if (childrens != null) {
       return (
