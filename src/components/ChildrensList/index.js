@@ -1,51 +1,13 @@
-import React, {useState} from 'react'
-import {FlatList, Image} from 'react-native'
+import React from 'react'
+import {FlatList} from 'react-native'
 
-import {
-  Card,
-  Title,
-  SubTitle,
-  HourText,
-  DropCard,
-  Button,
-  TextButton,
-  DropButton,
-} from './styles'
+import DropCardChildrens from '../../components/DropCardChildrens'
 
 export default function ChildrensList({data}) {
-  const [hidden, setHidden] = useState(true)
-
-  function onHandlePhone() {
-    // tratamento aqui da api totalVoice
-    return
-  }
-
   return (
     <FlatList
       data={data}
-      renderItem={({item}) => (
-        <Card hidden={hidden}>
-          <Title>{item.name}</Title>
-          <SubTitle>Responsável</SubTitle>
-          <HourText>{item.responsible}</HourText>
-
-          <DropButton onPress={() => setHidden(!hidden)}>
-            <Image source={require('../../assets/Down.png')} />
-          </DropButton>
-
-          <DropCard>
-            <Button hidden={hidden} onPress={() => onHandlePhone(item.phone)}>
-              <Image source={require('../../assets/icone-confimar.png')} />
-              <TextButton>Avisar chegada</TextButton>
-            </Button>
-
-            <Button hidden={hidden} onPress={() => setHidden(!hidden)}>
-              <Image source={require('../../assets/icone-cancelar.png')} />
-              <TextButton>Cancelar</TextButton>
-            </Button>
-          </DropCard>
-        </Card>
-      )}
+      renderItem={({item}) => <DropCardChildrens item={item} />}
       keyExtractor={(_, index) => `${index}`}
     />
   )
